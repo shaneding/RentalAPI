@@ -1,0 +1,15 @@
+{
+  "name": "rentalapi",
+  "version": "1.0.0",
+  "description": "An app to return the average rental price in an area",
+  "main": "server.js",
+  "scripts": {
+    "test": "node test",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
