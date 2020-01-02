@@ -13,7 +13,7 @@ exports.handler = (event, context, callback) => {
   })
   // checking connectiont to aws
   con.connect(function(err){
-    con.query("SELECT * FROM test.practice", function (err, result){
+    con.query("SELECT * FROM RentalData.Data", function (err, result){
       con.end();
       
       if (err) throw err;
