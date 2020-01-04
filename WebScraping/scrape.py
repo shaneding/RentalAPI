@@ -2,6 +2,15 @@
 from bs4 import BeautifulSoup
 import requests
 
+# establishing connection to mysql database
+import mysql.connector
+rental_database = mysql.connector.connect(
+    host = "practice.cdodof3lyshn.us-east-1.rds.amazonaws.com",
+    user = "admin",
+    password = "shane200195"
+)
+cursor = rental_database.cursor()
+
 scrape_url = "https://toronto.craigslist.org/d/apts-housing-for-rent/search/apa"
 
 response = requests.get(scrape_url)
@@ -33,7 +42,10 @@ for i, content in enumerate(listings):
 
     price.append(int(current_price))
     address.append([latitude, longitude])
+    #sql_query = "INSERT INTO RentalData.Data (Price, Longitude, Latitude) VALUES (%(Price), %(Longitude), %(Latitude))", {"Price": int(current_price), "Longitude": longitude, "latitude": latitude}
+    cursor.execute("INSERT INTO RentalData.Data (Price, Longitude, Latitude, Rooms) VALUES (%s, %s, %s, %s)", (current_price, longitude, latitude, 0))
 
+rental_database.commit()
 print(price)
 print(address)
 
