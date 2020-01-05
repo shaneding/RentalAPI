@@ -3,7 +3,7 @@
 
 var mysql = require('mysql')
 const request = require("request")
-var config = require('config.json')
+var config = require('./config.json')
 
 // AWS lambda portion
 exports.handler = (event, context, callback) => {
@@ -27,7 +27,7 @@ exports.handler = (event, context, callback) => {
       var longitude = result.results[0].geometry.location.lng
       var latitude = result.results[0].geometry.location.lat
       
-      var query = mysql.format("SELECT Price FROM RentalData.Data WHERE POWER(POWER(? - Longitude, 2) +  POWER(? - Latitude, 2), 0.5) < 0.13", [longitude, latitude])
+      var query = mysql.format("SELECT Price, Rooms FROM RentalData.Data WHERE POWER(POWER(? - Longitude, 2) +  POWER(? - Latitude, 2), 0.5) < 0.13", [longitude, latitude])
       
       // checking connectiont to aws
       con.connect(function(err){

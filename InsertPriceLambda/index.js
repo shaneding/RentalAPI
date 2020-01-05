@@ -1,6 +1,6 @@
 var mysql = require("mysql")
 const request = require("request")
-var config = require('config.json')
+var config = require('./config.json')
 
 // AWS Lambda Section
 exports.handler = (event, context, callback) => {
