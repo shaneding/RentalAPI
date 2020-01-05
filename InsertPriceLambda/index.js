@@ -1,14 +1,16 @@
 var mysql = require("mysql")
 const request = require("request")
+var config = require('config.json')
 
+// AWS Lambda Section
 exports.handler = (event, context, callback) => {
     
     // connecting to the sql database
     context.callbackWaitsForEmptyEventLoop = false;
     var con = mysql.createConnection({
-      host:"practice.cdodof3lyshn.us-east-1.rds.amazonaws.com",
-      user: "admin",
-      password: "shane200195"
+      host:config.host,
+      user: config.user,
+      password: config.password
     })
 
     // variables required for the http POST request

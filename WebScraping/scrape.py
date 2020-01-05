@@ -11,7 +11,7 @@ rental_database = mysql.connector.connect(
 )
 cursor = rental_database.cursor()
 
-scrape_url = "https://toronto.craigslist.org/d/apts-housing-for-rent/search/apa"
+scrape_url = "https://toronto.craigslist.org/search/apa?s=240"
 
 response = requests.get(scrape_url)
 content = BeautifulSoup(response.content, "html.parser")
