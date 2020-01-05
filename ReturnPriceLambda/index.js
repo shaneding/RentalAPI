@@ -16,7 +16,7 @@ exports.handler = (event, context, callback) => {
   })
   
   const address = event.address + " Canada"
-  const APIKey = "AIzaSyC-Qkl1Z9leuVjF3wZTR7lvXH7KTbFnW74"
+  const APIKey = config.apikey
   
   request.post("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + APIKey, (error, res, body) => {
       
